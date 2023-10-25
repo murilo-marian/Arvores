@@ -205,7 +205,7 @@ public class Main {
 
 
         System.out.println("VETOR ALEATORIO");
-        System.out.println("Arvore Binaria");
+       /* System.out.println("Arvore Binaria");
         ArvoreBinaria arvoreBinariaAM = new ArvoreBinaria();
 
         inicio = System.nanoTime();
@@ -216,7 +216,7 @@ public class Main {
         tempoDecorrido = fim - inicio;
 
         System.out.println("Tempo decorrido: " + TimeUnit.MILLISECONDS.convert(tempoDecorrido, TimeUnit.NANOSECONDS) + "ms");
-
+*/
         System.out.println("--------------");
         System.out.println("Arvore AVL");
         inicio = System.nanoTime();
@@ -404,6 +404,7 @@ public class Main {
 
 
         System.out.println("ALEATORIO");
+/*
 
         System.out.println("Binaria");
         inicio = System.nanoTime();
@@ -413,6 +414,7 @@ public class Main {
 
         System.out.println("Tempo decorrido: " + TimeUnit.MILLISECONDS.convert(tempoDecorrido, TimeUnit.NANOSECONDS) + "ms");
         System.out.println("--------------");
+*/
 
 
         System.out.println("ARVORE AVL");
@@ -625,6 +627,7 @@ public class Main {
         System.out.println("ALEATORIO");
         System.out.println("--------------");
         System.out.println("Arvore Binaria");
+/*
 
         inicio = System.nanoTime();
         for (int i : vetorExclusaoM) { //exclui em ordem
@@ -635,6 +638,7 @@ public class Main {
 
         System.out.println("Tempo decorrido: " + TimeUnit.MILLISECONDS.convert(tempoDecorrido, TimeUnit.NANOSECONDS) + "ms");
         System.out.println("--------------");
+*/
 
         System.out.println("ARVORE AVL");
         inicio = System.nanoTime();

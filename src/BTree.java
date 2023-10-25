@@ -3,15 +3,11 @@ import java.util.ArrayList;
 
 public class BTree {
     Node root;
-    float sizeLimit;
-    int sizeLimitCeil;
     public int t;
 
     public BTree(float sizeLimit) {
         this.root = new Node();
-        this.sizeLimit = sizeLimit / 2;
         this.t = (int) (sizeLimit / 2);
-        this.sizeLimitCeil = (int) Math.ceil(this.sizeLimit);
     }
 
 
@@ -57,7 +53,7 @@ public class BTree {
         parentNode.children.add(childIndex + 1, newNode);
 
         //
-        for (int i = 0; i < sizeLimitCeil - 1; i++) {
+        for (int i = 0; i < t - 1; i++) {
             newNode.keys.add(i, childNode.keys.get(i + t));
         }
 
@@ -128,7 +124,7 @@ public class BTree {
         }
 
         public boolean isFull() {
-            return keys.size() == 2 * sizeLimit - 1;
+            return keys.size() == 2 * t - 1;
         }
 
         public boolean isLeaf() {
@@ -174,14 +170,6 @@ public class BTree {
         this.root = root;
     }
 
-    public float getSizeLimit() {
-        return sizeLimit;
-    }
-
-    public void setSizeLimit(int sizeLimit) {
-        this.sizeLimit = sizeLimit;
-    }
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("BTree{");
@@ -223,16 +211,16 @@ public class BTree {
             }
             int childIndex = findChildIndex(node, key);
             Node childNode = node.children.get(childIndex);
-            if (childNode.keys.size() >= sizeLimitCeil) {
+            if (childNode.keys.size() >= t) {
                 // Caso 4: Filho possui chaves suficientes, continuamos nele
                 delete(childNode, key);
             } else {
                 // Caso 5: Filho possui chaves insuficientes
-                if (childIndex > 0 && node.children.get(childIndex - 1).keys.size() >= sizeLimitCeil) {
+                if (childIndex > 0 && node.children.get(childIndex - 1).keys.size() >= t) {
                     // Caso 5a: Roubar chave do filho à esquerda
                     borrowFromLeftSibling(node, childIndex);
                     delete(node.children.get(childIndex), key);
-                } else if (childIndex < node.children.size() - 1 && node.children.get(childIndex + 1).keys.size() >= sizeLimitCeil) {
+                } else if (childIndex < node.children.size() - 1 && node.children.get(childIndex + 1).keys.size() >= t) {
                     // Caso 5b: Roubar chave do filho à direita
                     borrowFromRightSibling(node, childIndex);
                     delete(node.children.get(childIndex), key);
